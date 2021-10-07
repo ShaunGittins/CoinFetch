@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -31,6 +32,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'linebreak-style': ['error', (process.platform === 'win32' ? 'windows' : 'unix')],
   },
   settings: {
     'import/resolver': {
