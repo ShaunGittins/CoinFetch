@@ -8,6 +8,7 @@ function App(): JSX.Element {
   return (
     <div className="App">
       <BrowserRouter>
+        <h1>Coin Fetch</h1>
         <Route exact path="/" component={ListPage} />
       </BrowserRouter>
     </div>
