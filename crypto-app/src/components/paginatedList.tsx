@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CoinGecko from '../apis/CoinGecko';
 import CoinTable from './coinTable';
-
-/* eslint-disable camelcase */
-interface Coin {
-    id: string;
-    name: string;
-    symbol: string;
-    current_price: number;
-}
+import Coin from './coin';
 
 const PaginatedList: React.FunctionComponent = () => {
     const [coins, setCoins] = useState<Coin[]>(() => []);
@@ -33,7 +26,7 @@ const PaginatedList: React.FunctionComponent = () => {
                 }
             });
 
-            setCoins(() => response.data);
+            setCoins(response.data);
         }
 
         fetchData();
@@ -64,7 +57,7 @@ const PaginatedList: React.FunctionComponent = () => {
                     )}
                 </select>
             </label>
-            <span>{(page * rowsPerPage) - rowsPerPage + 1}-{(page * rowsPerPage)} of ?</span>
+            <span>{(page * rowsPerPage) - rowsPerPage + 1}-{(page * rowsPerPage)} of ????</span>
             <button type='button' onClick={gotoPreviousPage}>&lt;</button>
             <button type='button' onClick={gotoNextPage}>&gt;</button>
         </div>

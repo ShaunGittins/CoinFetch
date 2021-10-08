@@ -1,12 +1,5 @@
 import React from 'react';
-
-/* eslint-disable camelcase */
-interface Coin {
-    id: string;
-    name: string;
-    symbol: string;
-    current_price: number;
-}
+import Coin from './coin';
 
 interface Props {
     coins: Coin[];
