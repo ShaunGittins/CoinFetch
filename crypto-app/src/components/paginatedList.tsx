@@ -1,54 +1,68 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CoinGecko from '../apis/CoinGecko';
 
+/* eslint-disable camelcase */
 interface Coin {
-    position: number;
+    id: string;
     name: string;
-    price: number;
-    details: string;
+    symbol: string;
+    current_price: number;
 };
 
-const coinList: Coin[] = [
-    {position: 1, name: 'Bitcoin', price: 54536, details: 'details1'},
-    {position: 2, name: 'Ethereum', price: 3523, details: 'details2'},
-];
-
 const PaginatedList: React.FunctionComponent = () => {
+    const [coins, setCoins] = useState<Coin[]>(() => []);
+    const [page, setPage] = useState<number>(1);
+
     useEffect(() => {
         const fetchData = async () => {
-            const response = await CoinGecko.get("/coins/list?include_platform=false", {
+            const response = await CoinGecko.get('/coins/markets', {
                 params: {
-                    vs_currency: "usd",
-                    ids: "bitcoin, ethereum",
+                    vs_currency: 'usd',
+                    order: 'market_cap_desc',
+                    per_page: 5,
+                    page,
+                    sparkline: false,
                 }
             });
 
-            console.log(response.data);
+            setCoins(() => response.data);
         }
 
         fetchData();
-    });
+    }, [page]);
+
+    function gotoPreviousPage() {
+        if (page !== 1) {
+            setPage(prevPage => prevPage - 1);
+        }
+    }
+
+    function gotoNextPage() {
+        setPage(prevPage => prevPage + 1);
+    }
 
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Position</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                {coinList.map((coin) => 
-                    <tr key={coin.position}>
-                        <td>{coin.position}</td>
-                        <td>{coin.name}</td>
-                        <td>{coin.price}</td>
-                        <td>{coin.details}</td>
-                    </tr>)}
-            </tbody>
-        </table>
+        <div>
+            <button type='button' onClick={gotoPreviousPage}>Set page to 1</button>
+            <button type='button' onClick={gotoNextPage}>Set page to 2</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Symbol</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {coins.map((coin) =>
+                        <tr key={coin.id}>
+                            <td>{coin.name}</td>
+                            <td>{coin.symbol}</td>
+                            <td>{coin.current_price}</td>
+                        </tr>)}
+                </tbody>
+            </table>
+        </div>
     );
 }
 
