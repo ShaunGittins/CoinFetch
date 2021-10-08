@@ -13,13 +13,20 @@ const PaginatedList: React.FunctionComponent = () => {
     const [coins, setCoins] = useState<Coin[]>(() => []);
     const [page, setPage] = useState<number>(1);
 
+    const pageRowOptions = [
+        { value: 10, label: '10' },
+        { value: 25, label: '25' },
+    ];
+
+    const [rowsPerPage, setRowsPerPage] = useState<number>(pageRowOptions[0].value);
+
     useEffect(() => {
         const fetchData = async () => {
             const response = await CoinGecko.get('/coins/markets', {
                 params: {
                     vs_currency: 'usd',
                     order: 'market_cap_desc',
-                    per_page: 5,
+                    per_page: rowsPerPage,
                     page,
                     sparkline: false,
                 }
@@ -29,7 +36,7 @@ const PaginatedList: React.FunctionComponent = () => {
         }
 
         fetchData();
-    }, [page]);
+    }, [page, rowsPerPage]);
 
     function gotoPreviousPage() {
         if (page !== 1) {
@@ -41,10 +48,12 @@ const PaginatedList: React.FunctionComponent = () => {
         setPage(prevPage => prevPage + 1);
     }
 
+    function changeRowsPerPage(event: React.ChangeEvent<HTMLSelectElement>) {
+        setRowsPerPage(Number(event.target.value));
+    }
+
     return (
         <div>
-            <button type='button' onClick={gotoPreviousPage}>Set page to 1</button>
-            <button type='button' onClick={gotoNextPage}>Set page to 2</button>
             <table>
                 <thead>
                     <tr>
@@ -62,6 +71,17 @@ const PaginatedList: React.FunctionComponent = () => {
                         </tr>)}
                 </tbody>
             </table>
+            <label htmlFor="a">
+                Rows per page:
+                <select value={rowsPerPage} onChange={changeRowsPerPage} id="a">
+                    {pageRowOptions.map((option) =>
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                    )}
+                </select>
+            </label>
+            <span>{(page * rowsPerPage) - rowsPerPage + 1}-{(page * rowsPerPage)} of ?</span>
+            <button type='button' onClick={gotoPreviousPage}>&lt;</button>
+            <button type='button' onClick={gotoNextPage}>&gt;</button>
         </div>
     );
 }
