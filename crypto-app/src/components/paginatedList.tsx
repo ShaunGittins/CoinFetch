@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CoinGecko from '../apis/CoinGecko';
+import CoinTable from './coinTable';
 
 /* eslint-disable camelcase */
 interface Coin {
@@ -7,7 +8,7 @@ interface Coin {
     name: string;
     symbol: string;
     current_price: number;
-};
+}
 
 const PaginatedList: React.FunctionComponent = () => {
     const [coins, setCoins] = useState<Coin[]>(() => []);
@@ -54,23 +55,7 @@ const PaginatedList: React.FunctionComponent = () => {
 
     return (
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Symbol</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {coins.map((coin) =>
-                        <tr key={coin.id}>
-                            <td>{coin.name}</td>
-                            <td>{coin.symbol}</td>
-                            <td>{coin.current_price}</td>
-                        </tr>)}
-                </tbody>
-            </table>
+            <CoinTable coins={coins} />
             <label htmlFor="a">
                 Rows per page:
                 <select value={rowsPerPage} onChange={changeRowsPerPage} id="a">
