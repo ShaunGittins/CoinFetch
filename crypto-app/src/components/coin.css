@@ -1,0 +1,19 @@
+#detailsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: left;
+}
+
+#detailsHint {
+  float: right;
+  margin-right: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  color: rgb(135, 143, 196);
+  background: rgb(247, 247, 247);
+}
+
+#detailsHint:hover {
+  color: white;
+  background: rgb(201, 201, 201);
+}

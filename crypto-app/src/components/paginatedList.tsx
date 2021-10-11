@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CoinGecko from '../apis/CoinGecko';
 import CoinTable from './coinTable';
-import Coin from './coin';
+import CoinInterface from './coinInterface';
 import PaginationControls from './paginationControls';
 
 const pageRowOptions = [
@@ -11,7 +11,7 @@ const pageRowOptions = [
 ];
 
 const PaginatedList: React.FunctionComponent = () => {
-  const [coins, setCoins] = useState<Coin[]>(() => []);
+  const [coins, setCoins] = useState<CoinInterface[]>(() => []);
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(
     pageRowOptions[0].value

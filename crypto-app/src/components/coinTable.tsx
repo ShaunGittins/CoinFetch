@@ -1,9 +1,10 @@
 import React from 'react';
+import CoinInterface from './coinInterface';
 import Coin from './coin';
 import './coinTable.css';
 
 interface Props {
-  coins: Coin[];
+  coins: CoinInterface[];
 }
 
 const CoinTable: React.FunctionComponent<Props> = ({ coins }) => (
@@ -17,14 +18,7 @@ const CoinTable: React.FunctionComponent<Props> = ({ coins }) => (
     </thead>
     <tbody>
       {coins.map((coin) => (
-        <tr key={coin.id}>
-          <td>
-            <img className="coinIcon" src={coin.image} alt={coin.name} />
-            {coin.name}
-          </td>
-          <td>{coin.symbol}</td>
-          <td>{coin.current_price}</td>
-        </tr>
+        <Coin coin={coin} />
       ))}
     </tbody>
   </table>
