@@ -1,0 +1,24 @@
+#coinTable {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  border-bottom: 5px solid purple;
+  table-layout: fixed;
+}
+
+#coinTable th {
+  color: white;
+  background-color: purple;
+}
+
+#coinTable th,
+#coinTable td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border: 1px solid rgb(236, 236, 236);
+}
+
+#coinTable tr:hover {
+  background-color: rgb(243, 243, 243);
+}

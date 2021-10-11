@@ -1,12 +1,13 @@
 import React from 'react';
 import Coin from './coin';
+import './coinTable.css';
 
 interface Props {
     coins: Coin[];
 }
 
 const CoinTable: React.FunctionComponent<Props> = ({ coins }) => (
-    <table>
+    <table id="coinTable">
         <thead>
             <tr>
                 <th>Name</th>
