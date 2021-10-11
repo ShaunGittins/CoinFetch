@@ -18,7 +18,10 @@ const CoinTable: React.FunctionComponent<Props> = ({ coins }) => (
     <tbody>
       {coins.map((coin) => (
         <tr key={coin.id}>
-          <td>{coin.name}</td>
+          <td>
+            <img className="coinIcon" src={coin.image} alt={coin.name} />
+            {coin.name}
+          </td>
           <td>{coin.symbol}</td>
           <td>{coin.current_price}</td>
         </tr>

@@ -4,4 +4,5 @@ export default interface Coin {
   name: string;
   symbol: string;
   current_price: number;
+  image: string;
 }
