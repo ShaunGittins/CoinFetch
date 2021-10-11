@@ -1,4 +1,5 @@
 import React from 'react';
+import './paginationControls.css';
 
 interface RowOption {
   value: number;
@@ -35,9 +36,9 @@ const PaginationControls: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <div id="class">
+    <div id="container">
       <label htmlFor="rowsPerPage">
-        Rows per page:
+        Rows per page:&nbsp;
         <select
           value={rowsPerPage}
           onChange={changeRowsPerPage}
@@ -51,12 +52,13 @@ const PaginationControls: React.FunctionComponent<Props> = ({
         </select>
       </label>
       <span>
-        {page * rowsPerPage - rowsPerPage + 1}-{page * rowsPerPage} of ????
+        &nbsp;{page * rowsPerPage - rowsPerPage + 1}-{page * rowsPerPage} of
+        ????
       </span>
-      <button type="button" onClick={gotoPreviousPage}>
+      <button className="pageButton" type="button" onClick={gotoPreviousPage}>
         &lt;
       </button>
-      <button type="button" onClick={gotoNextPage}>
+      <button className="pageButton" type="button" onClick={gotoNextPage}>
         &gt;
       </button>
     </div>
