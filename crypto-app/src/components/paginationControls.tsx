@@ -51,11 +51,15 @@ const PaginationControls: React.FunctionComponent<Props> = ({
           ))}
         </select>
       </label>
-      <span>
+      <span id="pageCounter">
         &nbsp;{page * rowsPerPage - rowsPerPage + 1}-{page * rowsPerPage} of
         ????
       </span>
-      <button className="pageButton" type="button" onClick={gotoPreviousPage}>
+      <button
+        className={`pageButton${page === 1 ? 'Disabled' : ''}`}
+        type="button"
+        onClick={gotoPreviousPage}
+      >
         &lt;
       </button>
       <button className="pageButton" type="button" onClick={gotoNextPage}>

@@ -4,8 +4,30 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  font-size: 18px;
 }
 
-.pageButton {
+#pageCounter {
+  display: inline-block;
+  width: 150px;
+}
+
+.pageButton,
+.pageButtonDisabled {
   margin-left: 6px;
+  border: none;
+  background: none;
+  height: 32px;
+  width: 32px;
+  font-size: large;
+}
+
+.pageButton:hover,
+.pageButtonDisabled:hover {
+  border-radius: 16px;
+  background: rgb(233, 233, 233);
+}
+
+.pageButtonDisabled {
+  color: rgb(182, 182, 182);
 }
