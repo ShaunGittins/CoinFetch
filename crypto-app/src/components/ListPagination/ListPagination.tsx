@@ -15,6 +15,7 @@ const pageRowOptions = [
 
 const ListPagination: React.FunctionComponent = () => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [failedLoad, setFailedLoad] = useState<boolean>(false);
   const [coins, setCoins] = useState<CoinInterface[]>(() => []);
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(
@@ -22,23 +23,28 @@ const ListPagination: React.FunctionComponent = () => {
   );
   const [filter, setFilter] = useState<string>('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const response = await CoinGecko.get('/coins/markets', {
-        params: {
-          vs_currency: 'usd',
-          order: 'market_cap_desc',
-          per_page: rowsPerPage,
-          page,
-          sparkline: false,
-        },
+  const fetchData = async () => {
+    if (failedLoad) setFailedLoad(false);
+    setLoading(true);
+    await CoinGecko.get('/coins/markets', {
+      params: {
+        vs_currency: 'usd',
+        order: 'market_cap_desc',
+        per_page: rowsPerPage,
+        page,
+        sparkline: false,
+      },
+    })
+      .then((response) => {
+        setCoins(response.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setFailedLoad(true);
       });
+  };
 
-      setCoins(response.data);
-      setLoading(false);
-    };
-
+  useEffect(() => {
     fetchData();
   }, [page, rowsPerPage]);
 
@@ -56,6 +62,16 @@ const ListPagination: React.FunctionComponent = () => {
 
   return (
     <div id="paginatedList">
+      {failedLoad ? (
+        <div>
+          Something went wrong. Wait a moment then{' '}
+          <button type="button" onClick={fetchData}>
+            Retry
+          </button>
+        </div>
+      ) : (
+        ''
+      )}
       <label id="filterControl" htmlFor="filter">
         <sub>Filter: </sub>
         <input
