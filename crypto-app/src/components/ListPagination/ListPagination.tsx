@@ -43,7 +43,9 @@ const ListPagination: React.FunctionComponent = () => {
     setFilter(event.target.value);
   }
 
-  const filteredCoins = coins.filter((coin) => coin.name.includes(filter));
+  const filteredCoins = coins.filter((coin) =>
+    coin.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <div id="paginatedList">
