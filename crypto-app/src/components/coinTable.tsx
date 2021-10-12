@@ -8,20 +8,13 @@ interface Props {
 }
 
 const CoinTable: React.FunctionComponent<Props> = ({ coins }) => (
-  <table id="coinTable">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Symbol</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      {coins.map((coin) => (
+  <ul id="coinList">
+    {coins.map((coin) => (
+      <li className="coinListItem" key={coin.id}>
         <Coin coin={coin} />
-      ))}
-    </tbody>
-  </table>
+      </li>
+    ))}
+  </ul>
 );
 
 export default CoinTable;

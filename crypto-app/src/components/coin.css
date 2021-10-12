@@ -1,19 +1,28 @@
-#detailsContainer {
+#listItemCollapsed {
   display: flex;
-  justify-content: space-evenly;
-  text-align: left;
+  justify-content: space-between;
 }
 
-#detailsHint {
-  float: right;
+#expansionHint {
   margin-right: 16px;
   padding: 4px;
   border-radius: 4px;
-  color: rgb(135, 143, 196);
+  color: rgb(106, 113, 160);
   background: rgb(247, 247, 247);
 }
 
-#detailsHint:hover {
+#expansionHint:hover {
   color: white;
   background: rgb(201, 201, 201);
+}
+
+.coinIcon {
+  width: 16px;
+  height: 16px;
+  padding-right: 8px;
+}
+
+#listItemExpansion {
+  display: flex;
+  justify-content: space-evenly;
 }
