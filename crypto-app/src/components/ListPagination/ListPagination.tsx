@@ -48,8 +48,10 @@ const ListPagination: React.FunctionComponent = () => {
     setFilter(event.target.value);
   }
 
-  const filteredCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(filter.toLowerCase())
+  const filteredCoins = coins.filter(
+    (coin) =>
+      coin.name.toLowerCase().includes(filter.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
