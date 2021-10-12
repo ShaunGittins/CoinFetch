@@ -47,7 +47,7 @@ const ListPagination: React.FunctionComponent = () => {
 
   return (
     <div id="paginatedList">
-      <label id="filterLabel" htmlFor="filter">
+      <label id="filterControl" htmlFor="filter">
         <sub>Filter: </sub>
         <input
           id="filter"
@@ -56,6 +56,7 @@ const ListPagination: React.FunctionComponent = () => {
           onChange={filterHandleChange}
         />
       </label>
+      <br />
       <CoinList coins={filteredCoins} />
       <Controls
         page={page}
