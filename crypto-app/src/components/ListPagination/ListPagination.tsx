@@ -3,6 +3,7 @@ import CoinGecko from '../../apis/CoinGecko';
 import CoinList from '../CoinList/CoinList';
 import CoinInterface from '../Coin/CoinInterface';
 import Controls from './Controls/Controls';
+import './listpagination.css';
 
 const pageRowOptions = [
   { value: 25, label: '25' },
@@ -16,6 +17,7 @@ const ListPagination: React.FunctionComponent = () => {
   const [rowsPerPage, setRowsPerPage] = useState<number>(
     pageRowOptions[0].value
   );
+  const [filter, setFilter] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,9 +37,26 @@ const ListPagination: React.FunctionComponent = () => {
     fetchData();
   }, [page, rowsPerPage]);
 
+  function filterHandleChange(event: {
+    target: { value: React.SetStateAction<string> };
+  }) {
+    setFilter(event.target.value);
+  }
+
+  const filteredCoins = coins.filter((coin) => coin.name.includes(filter));
+
   return (
-    <div>
-      <CoinList coins={coins} />
+    <div id="paginatedList">
+      <label id="filterLabel" htmlFor="filter">
+        <sub>Filter: </sub>
+        <input
+          id="filter"
+          type="text"
+          value={filter}
+          onChange={filterHandleChange}
+        />
+      </label>
+      <CoinList coins={filteredCoins} />
       <Controls
         page={page}
         rowsPerPage={rowsPerPage}
