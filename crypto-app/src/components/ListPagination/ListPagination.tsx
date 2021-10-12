@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import CoinGecko from '../apis/CoinGecko';
-import CoinTable from './coinTable';
-import CoinInterface from './coinInterface';
-import PaginationControls from './paginationControls';
+import CoinGecko from '../../apis/CoinGecko';
+import CoinList from '../CoinList/CoinList';
+import CoinInterface from '../Coin/CoinInterface';
+import Controls from './Controls/Controls';
 
 const pageRowOptions = [
-  { value: 10, label: '10' },
   { value: 25, label: '25' },
   { value: 50, label: '50' },
+  { value: 100, label: '100' },
 ];
 
-const PaginatedList: React.FunctionComponent = () => {
+const ListPagination: React.FunctionComponent = () => {
   const [coins, setCoins] = useState<CoinInterface[]>(() => []);
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(
@@ -37,8 +37,8 @@ const PaginatedList: React.FunctionComponent = () => {
 
   return (
     <div>
-      <CoinTable coins={coins} />
-      <PaginationControls
+      <CoinList coins={coins} />
+      <Controls
         page={page}
         rowsPerPage={rowsPerPage}
         onPageChange={(currentPage: number) => setPage(currentPage)}
@@ -51,4 +51,4 @@ const PaginatedList: React.FunctionComponent = () => {
   );
 };
 
-export default PaginatedList;
+export default ListPagination;

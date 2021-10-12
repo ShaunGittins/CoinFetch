@@ -1,10 +1,10 @@
 import React from 'react';
-import PaginatedList from '../components/paginatedList';
+import ListPagination from '../components/ListPagination/ListPagination';
 
 function ListPage(): JSX.Element {
   return (
     <div className="Page">
-      <PaginatedList />
+      <ListPagination />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './paginationControls.css';
+import './controls.css';
 
 interface RowOption {
   value: number;

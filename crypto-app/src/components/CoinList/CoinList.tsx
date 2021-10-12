@@ -1,13 +1,13 @@
 import React from 'react';
-import CoinInterface from './coinInterface';
-import Coin from './coin';
-import './coinTable.css';
+import CoinInterface from '../Coin/CoinInterface';
+import Coin from '../Coin/Coin';
+import './coinlist.css';
 
 interface Props {
   coins: CoinInterface[];
 }
 
-const CoinTable: React.FunctionComponent<Props> = ({ coins }) => (
+const CoinList: React.FunctionComponent<Props> = ({ coins }) => (
   <ul id="coinList">
     {coins.map((coin) => (
       <li className="coinListItem" key={coin.id}>
@@ -17,4 +17,4 @@ const CoinTable: React.FunctionComponent<Props> = ({ coins }) => (
   </ul>
 );
 
-export default CoinTable;
+export default CoinList;

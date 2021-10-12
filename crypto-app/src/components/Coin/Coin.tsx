@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CoinInterface from './coinInterface';
+import CoinInterface from './CoinInterface';
 import './coin.css';
 
 interface Props {
