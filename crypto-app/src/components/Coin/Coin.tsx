@@ -19,6 +19,13 @@ const CoinTable: React.FunctionComponent<Props> = ({ coin }) => {
     }
   }
 
+  function DataExists(value: number | null | undefined) {
+    if (value === undefined || value === null) {
+      return 'No data';
+    }
+    return value.toLocaleString();
+  }
+
   return (
     <div>
       <div
@@ -37,18 +44,18 @@ const CoinTable: React.FunctionComponent<Props> = ({ coin }) => {
       <div id="listItemExpansion" style={expanded ? {} : { display: 'none' }}>
         <div>
           <b>Price</b>
-          <br />${coin.current_price.toLocaleString()}
-          <br /> 24h Low ${coin.low_24h.toLocaleString()} - High: $
-          {coin.high_24h.toLocaleString()}
+          <br />${DataExists(coin.current_price)}
+          <br /> 24h Low: ${DataExists(coin.low_24h)}- High: $
+          {DataExists(coin.high_24h)}
           <br />
-          Change: ${coin.price_change_24h.toLocaleString()} (
+          Change: ${DataExists(coin.price_change_24h)}(
           {coin.price_change_percentage_24h}%)
         </div>
         <div>
           <b>Market Cap</b>
-          <br />${coin.market_cap.toLocaleString()} (Rank #
-          {coin.market_cap_rank}) <br />
-          24h Change: ${coin.market_cap_change_24h.toLocaleString()} (
+          <br />${DataExists(coin.market_cap)}
+          (Rank #{coin.market_cap_rank}) <br />
+          24h Change: ${DataExists(coin.market_cap_change_24h)}(
           {coin.market_cap_change_percentage_24h}%)
         </div>
       </div>
