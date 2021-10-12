@@ -43,7 +43,7 @@ const CoinTable: React.FunctionComponent<Props> = ({ coin }) => {
       </div>
       <div id="listItemExpansion" style={expanded ? {} : { display: 'none' }}>
         <div>
-          <b>Price</b>
+          <h4>Price</h4>
           <br />${DataExists(coin.current_price)}
           <br /> 24h Low: ${DataExists(coin.low_24h)}- High: $
           {DataExists(coin.high_24h)}
@@ -52,7 +52,7 @@ const CoinTable: React.FunctionComponent<Props> = ({ coin }) => {
           {coin.price_change_percentage_24h}%)
         </div>
         <div>
-          <b>Market Cap</b>
+          <h4>Market Cap</h4>
           <br />${DataExists(coin.market_cap)}
           (Rank #{coin.market_cap_rank}) <br />
           24h Change: ${DataExists(coin.market_cap_change_24h)}(

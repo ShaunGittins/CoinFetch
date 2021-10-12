@@ -24,5 +24,10 @@
 
 #listItemExpansion {
   display: flex;
-  justify-content: space-evenly;
+  column-gap: 10px;
+}
+
+#listItemExpansion h4 {
+  display: inline;
+  text-decoration: underline;
 }
