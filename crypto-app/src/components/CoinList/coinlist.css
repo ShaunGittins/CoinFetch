@@ -1,10 +1,6 @@
 #coinList {
-  width: 60%;
   text-align: left;
   list-style-type: none;
-  width: 50%;
-  margin: 0 auto;
-  margin-bottom: 90px;
   border-bottom: 5px solid purple;
 }
 
