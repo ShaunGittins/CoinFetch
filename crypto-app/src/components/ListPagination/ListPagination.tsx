@@ -60,6 +60,10 @@ const ListPagination: React.FunctionComponent = () => {
       </label>
       <br />
       <CoinList coins={filteredCoins} />
+      <sub>
+        Currently showing {filteredCoins.length} / {rowsPerPage} currencies
+        based on filter settings
+      </sub>
       <Controls
         page={page}
         rowsPerPage={rowsPerPage}
