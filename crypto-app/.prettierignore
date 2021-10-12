@@ -4,3 +4,5 @@ coverage
 
 *.md
 *.txt
+*.svg
+*.css

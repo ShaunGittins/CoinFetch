@@ -4,14 +4,17 @@ import CoinList from '../CoinList/CoinList';
 import CoinInterface from '../Coin/CoinInterface';
 import Controls from './Controls/Controls';
 import './listpagination.css';
+import { ReactComponent as LoadingSVG } from '../../assets/Spinner-1s-200px.svg';
 
 const pageRowOptions = [
   { value: 25, label: '25' },
   { value: 50, label: '50' },
   { value: 100, label: '100' },
+  { value: 250, label: '250' },
 ];
 
 const ListPagination: React.FunctionComponent = () => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [coins, setCoins] = useState<CoinInterface[]>(() => []);
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(
@@ -21,6 +24,7 @@ const ListPagination: React.FunctionComponent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       const response = await CoinGecko.get('/coins/markets', {
         params: {
           vs_currency: 'usd',
@@ -32,6 +36,7 @@ const ListPagination: React.FunctionComponent = () => {
       });
 
       setCoins(response.data);
+      setLoading(false);
     };
 
     fetchData();
@@ -59,7 +64,11 @@ const ListPagination: React.FunctionComponent = () => {
         />
       </label>
       <br />
-      <CoinList coins={filteredCoins} />
+      {loading ? (
+        <LoadingSVG id="loadingSVG" />
+      ) : (
+        <CoinList coins={filteredCoins} />
+      )}
       <sub>
         Currently showing {filteredCoins.length} / {rowsPerPage} currencies
         based on filter settings

@@ -7,3 +7,7 @@
 #filterControl {
   float: right;
 }
+
+#loadingSVG {
+  width: 100%;
+}
