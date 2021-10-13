@@ -1,5 +1,6 @@
 import React from 'react';
 import './controls.css';
+import { FromPageCount, ToPageCount } from './PageDisplayMath';
 
 interface RowOption {
   value: number;
@@ -52,8 +53,8 @@ const PaginationControls: React.FunctionComponent<Props> = ({
         </select>
       </label>
       <span id="pageCounter">
-        &nbsp;{page * rowsPerPage - rowsPerPage + 1}-{page * rowsPerPage} of
-        ????
+        &nbsp;{FromPageCount(page, rowsPerPage)}-
+        {ToPageCount(page, rowsPerPage)} of ????
       </span>
       <button
         className={`pageButton${page === 1 ? 'Disabled' : ''}`}
