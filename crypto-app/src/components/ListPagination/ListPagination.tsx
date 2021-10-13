@@ -72,7 +72,7 @@ const ListPagination: React.FunctionComponent = () => {
       ) : (
         ''
       )}
-      <label id="filterControl" htmlFor="filter">
+      <label data-testid="filter" id="filterControl" htmlFor="filter">
         <sub>Filter: </sub>
         <input
           id="filter"
@@ -83,7 +83,7 @@ const ListPagination: React.FunctionComponent = () => {
       </label>
       <br />
       {loading ? (
-        <LoadingSVG id="loadingSVG" />
+        <LoadingSVG data-testid="loading" id="loadingSVG" />
       ) : (
         <CoinList coins={filteredCoins} />
       )}
@@ -91,15 +91,17 @@ const ListPagination: React.FunctionComponent = () => {
         Currently showing {filteredCoins.length} / {rowsPerPage} currencies
         based on filter settings
       </sub>
-      <Controls
-        page={page}
-        rowsPerPage={rowsPerPage}
-        onPageChange={(currentPage: number) => setPage(currentPage)}
-        onRowCountChange={(currentRowsPerPage: number) =>
-          setRowsPerPage(currentRowsPerPage)
-        }
-        rowCountOptions={pageRowOptions}
-      />
+      <div data-testid="controls">
+        <Controls
+          page={page}
+          rowsPerPage={rowsPerPage}
+          onPageChange={(currentPage: number) => setPage(currentPage)}
+          onRowCountChange={(currentRowsPerPage: number) =>
+            setRowsPerPage(currentRowsPerPage)
+          }
+          rowCountOptions={pageRowOptions}
+        />
+      </div>
     </div>
   );
 };

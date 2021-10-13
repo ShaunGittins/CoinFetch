@@ -36,7 +36,12 @@ const CoinTable: React.FunctionComponent<Props> = ({ coin }) => {
         onKeyPress={handleKeyPress}
       >
         <div>
-          <img className="coinIcon" src={coin.image} alt={coin.name} />
+          <img
+            data-testid="coinIcon"
+            className="coinIcon"
+            src={coin.image}
+            alt={coin.name}
+          />
           {coin.name} ({coin.symbol})
         </div>
         <span id="expansionHint">{expanded ? '▲' : '▼'}</span>
