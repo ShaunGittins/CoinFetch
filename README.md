@@ -9,7 +9,7 @@ Frontend application that uses the CoinGecko Crypto API to list cryptocurrencies
 The number of coins per page can be adjusted, pages can be moved through, and can be filtered.
 Clicking on a coin will show more details about the price and market cap.
 
-[Live Demo](https://shaungittins.github.io/CryptoApp/)
+[Live Demo](https://shaungittins.github.io/CoinFetch/)
 
 ## Tools used
 
