@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/CryptoApp/static/css/main.26d2b04e.chunk.css",
-    "main.js": "/CryptoApp/static/js/main.50b3c5b5.chunk.js",
-    "main.js.map": "/CryptoApp/static/js/main.50b3c5b5.chunk.js.map",
+    "main.css": "/CryptoApp/static/css/main.09a8170a.chunk.css",
+    "main.js": "/CryptoApp/static/js/main.32a6c209.chunk.js",
+    "main.js.map": "/CryptoApp/static/js/main.32a6c209.chunk.js.map",
     "runtime-main.js": "/CryptoApp/static/js/runtime-main.7a0c6c2a.js",
     "runtime-main.js.map": "/CryptoApp/static/js/runtime-main.7a0c6c2a.js.map",
     "static/js/2.14c5e2c5.chunk.js": "/CryptoApp/static/js/2.14c5e2c5.chunk.js",
     "static/js/2.14c5e2c5.chunk.js.map": "/CryptoApp/static/js/2.14c5e2c5.chunk.js.map",
     "index.html": "/CryptoApp/index.html",
-    "static/css/main.26d2b04e.chunk.css.map": "/CryptoApp/static/css/main.26d2b04e.chunk.css.map",
+    "static/css/main.09a8170a.chunk.css.map": "/CryptoApp/static/css/main.09a8170a.chunk.css.map",
     "static/js/2.14c5e2c5.chunk.js.LICENSE.txt": "/CryptoApp/static/js/2.14c5e2c5.chunk.js.LICENSE.txt",
     "static/media/Spinner-1s-200px.0bceb8e0.svg": "/CryptoApp/static/media/Spinner-1s-200px.0bceb8e0.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.7a0c6c2a.js",
     "static/js/2.14c5e2c5.chunk.js",
-    "static/css/main.26d2b04e.chunk.css",
-    "static/js/main.50b3c5b5.chunk.js"
+    "static/css/main.09a8170a.chunk.css",
+    "static/js/main.32a6c209.chunk.js"
   ]
 }
