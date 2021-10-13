@@ -5,32 +5,28 @@
 
 ## About
 
-Frontend application that uses the CoinGecko Crypto API to show the details of cryptocurrencies.
-
-
+Frontend application that uses the CoinGecko Crypto API to list cryptocurrencies.
+The number of coins per page can be adjusted, pages can be moved through, and can be filtered.
+Clicking on a coin will show more details about the price and market cap.
 
 ## Tools used
 
-* [React.js](https://reactjs.org/)
-* [TypeScript](https://www.typescriptlang.org/)
-* [ESLint](https://eslint.org/)
-* [Prettier](https://prettier.io/)
-* [Jest](https://jestjs.io/)
-
-
+- [React.js](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [Jest](https://jestjs.io/)
 
 ## Setting project up locally
 
 Follow these steps.
 
-
 ### Prerequisites
 
-* npm
+- npm
   ```sh
   npm install npm@latest -g
   ```
-
 
 ### Installation
 
@@ -46,7 +42,10 @@ Follow these steps.
    ```sh
    npm install
    ```
-4. **That's it! Run the app**
+   **That's it! Run or test the app**
    ```sh
    npm start
+   ```
+   ```sh
+   npm test
    ```
