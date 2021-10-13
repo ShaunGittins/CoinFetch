@@ -7,7 +7,9 @@ import ListPage from './pages/ListPage';
 function App(): JSX.Element {
   return (
     <div className="App">
-      <h1>Coin Fetch</h1>
+      <div id="titleContainer">
+        <h1>Coin Fetch</h1>
+      </div>
       <ListPage />
     </div>
   );

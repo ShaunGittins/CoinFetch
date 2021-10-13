@@ -7,6 +7,7 @@ import './listpagination.css';
 import { ReactComponent as LoadingSVG } from '../../assets/Spinner-1s-200px.svg';
 
 const pageRowOptions = [
+  { value: 10, label: '10' },
   { value: 25, label: '25' },
   { value: 50, label: '50' },
   { value: 100, label: '100' },
@@ -19,7 +20,7 @@ const ListPagination: React.FunctionComponent = () => {
   const [coins, setCoins] = useState<CoinInterface[]>(() => []);
   const [page, setPage] = useState<number>(1);
   const [rowsPerPage, setRowsPerPage] = useState<number>(
-    pageRowOptions[0].value
+    pageRowOptions[1].value
   );
   const [filter, setFilter] = useState<string>('');
 

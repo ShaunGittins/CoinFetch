@@ -1,6 +1,5 @@
 #container {
   padding-bottom: 24px;
-  font-size: 18px;
 }
 
 #pageCounter {
@@ -22,6 +21,7 @@
 .pageButtonDisabled:hover {
   border-radius: 16px;
   background: rgb(233, 233, 233);
+  color: rgb(50, 48, 187);
 }
 
 .pageButtonDisabled {
