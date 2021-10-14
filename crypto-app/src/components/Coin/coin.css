@@ -21,12 +21,17 @@
 
 #listItemExpansion {
   display: flex;
-  column-gap: 10px;
+  column-gap: 14px;
   padding-left: 12px;
   padding-bottom: 12px;
 }
 
 #listItemExpansion h4 {
   display: inline;
-  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
 }

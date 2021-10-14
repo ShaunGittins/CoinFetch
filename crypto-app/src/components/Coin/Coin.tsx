@@ -9,28 +9,41 @@ interface Props {
 const CoinTable: React.FunctionComponent<Props> = ({ coin }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
-  function ToggleExpansion() {
+  function toggleExpansion() {
     setExpanded(!expanded);
   }
 
   function handleKeyPress(event: { key: string }) {
     if (event.key === 'Enter') {
-      ToggleExpansion();
+      toggleExpansion();
     }
   }
 
-  function DataExists(value: number | null | undefined) {
-    if (value === undefined || value === null) {
-      return 'No data';
+  function colorPercentageChange(value: number | undefined) {
+    let result = 'gray';
+    if (value === undefined || value === 0) {
+      result = 'gray';
+    } else if (value > 0) {
+      result = 'green';
+    } else {
+      result = 'red';
     }
-    return value.toLocaleString();
+    return result;
   }
+
+  const priceChangeStyle = {
+    color: colorPercentageChange(coin.price_change_percentage_24h),
+  };
+
+  const marketCapChangeStyle = {
+    color: colorPercentageChange(coin.market_cap_change_percentage_24h),
+  };
 
   return (
     <div>
       <div
         id="listItemCollapsed"
-        onClick={ToggleExpansion}
+        onClick={toggleExpansion}
         role="button"
         tabIndex={0}
         onKeyPress={handleKeyPress}
@@ -49,19 +62,44 @@ const CoinTable: React.FunctionComponent<Props> = ({ coin }) => {
       <div id="listItemExpansion" style={expanded ? {} : { display: 'none' }}>
         <div>
           <h4>Price</h4>
-          <br />${DataExists(coin.current_price)}
-          <br /> 24h Low: ${DataExists(coin.low_24h)}- High: $
-          {DataExists(coin.high_24h)}
-          <br />
-          Change: ${DataExists(coin.price_change_24h)}(
-          {coin.price_change_percentage_24h}%)
+          <ul>
+            <li>
+              ${coin.current_price?.toLocaleString()}
+              <sub style={priceChangeStyle}>
+                {` ${coin.price_change_percentage_24h?.toFixed(2)}`}%
+              </sub>
+            </li>
+            <li>
+              24h Low / High: ${coin.low_24h?.toLocaleString()} / $
+              {coin.high_24h?.toLocaleString()}
+            </li>
+            <li>24h Change: ${coin.price_change_24h?.toLocaleString()}</li>
+          </ul>
         </div>
         <div>
           <h4>Market Cap</h4>
-          <br />${DataExists(coin.market_cap)}
-          (Rank #{coin.market_cap_rank}) <br />
-          24h Change: ${DataExists(coin.market_cap_change_24h)}(
-          {coin.market_cap_change_percentage_24h}%)
+          <ul>
+            <li>
+              ${coin.market_cap?.toLocaleString()}
+              <sub> Rank #{coin.market_cap_rank}</sub>
+            </li>
+            <li>
+              24h Change: ${coin.market_cap_change_24h?.toLocaleString()}
+              <sub style={marketCapChangeStyle}>
+                {` ${coin.market_cap_change_percentage_24h?.toFixed(2)}`}%
+              </sub>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4>Supply</h4>
+          <ul>
+            <li>
+              Circulating Supply: {coin.circulating_supply?.toLocaleString()}
+            </li>
+            <li>Total Supply: {coin.total_supply?.toLocaleString()}</li>
+            <li>Max Supply: {coin.max_supply?.toLocaleString()}</li>
+          </ul>
         </div>
       </div>
     </div>
