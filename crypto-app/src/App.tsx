@@ -5,6 +5,8 @@ import ListPage from './pages/ListPage';
 // import VolumeTrendPage from './pages/VolumeTrendPage';
 
 function App(): JSX.Element {
+  document.title = 'Coin Fetch';
+
   return (
     <div className="App">
       <div id="titleContainer">
